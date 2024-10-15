@@ -62,13 +62,14 @@ fun CustomCircularProgress(count: Int) {
         contentAlignment = Alignment.Center
     ) {
         val animatedCount by animateIntAsState(
-            count,
+            safeCount,
             animationSpec = tween(1000),
             label = "counter animation"
         )
         val animatedColor by animateColorAsState(
             targetValue = if (count == 0) Color.LightGray else Color.Black,
-            animationSpec = tween(1000)
+            animationSpec = tween(1000),
+            label = "count color animation"
         )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
